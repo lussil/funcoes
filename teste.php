@@ -55,22 +55,40 @@ function Sorteio()
     return $numerosSorteados ;
 };
 
-function sequenciaCrescente($array) {
 
+// incompleto
+function sequenciaCrescente($array)
+{
     $elementos = count($array);
 
-
-    foreach ($array as $key => $value) {
-        $value;
+    for ($i = 0; $i < $elementos; $i++) {
+        array_splice($array, $i, 1);
+        if (!isIncreasing($array)) {
+            return false;
+        };
+        return true;
     }
+};
 
-    for ($i=0; $i < $elementos ; $i++) { 
-        unset($array[$i]);
-        if ($array[$i - 1] > $array[$i]) {
-            return 0;
+
+function isIncreasing($array)
+{
+    $elementos = count($array);
+
+    for ($i = 0; $i < $elementos - 1; $i++) {
+        if ($array[$i] < $array[$i + 1]) {
+            echo ($array[$i] . $array[$i + 1]);
+            echo ("<br>");
+        } else {
+            echo ($array[$i] . $array[$i + 1]);
+            echo ("<br>");
+            return false;
         }
     }
-} ;
+    return true;
+};
+
+
 
 
 
@@ -84,4 +102,5 @@ echo '<pre>';
 print_r(Sorteio());
 echo '</pre>';
 
-
+$arrayTeste = [0,4,6,6];
+var_dump(sequenciaCrescente($arrayTeste));
